@@ -3,10 +3,19 @@
 import threading, os, copy
 from pprint import pprint
 from pgm import pgmread, pgmwrite
+import numpy as np
 
 def alargamento_contraste(imagem): 
-    print("Task 1 assigned to thread: {}".format(threading.current_thread().name)) 
-    
+    print("Task 1 assigned to thread: {}".format(threading.current_thread().name))
+
+    nova_imagem = np.zeros((480, 640))
+
+    for x in range(len(imagem[0])):
+        for y in range(len(imagem[0][x])):
+            nova_imagem[x][y] = imagem[0][x][y]
+
+    pgmwrite(nova_imagem, 'teste.pgm')
+
 def equalizacao_histograma(imagem): 
     print("Task 2 assigned to thread: {}".format(threading.current_thread().name)) 
   
