@@ -38,14 +38,13 @@ def __calcular_probabilidade_ocorrencia(h):
 
 def __calcular_probabilidade_acumulada(p):
     q = np.zeros(256)
-    cont = 0
     for i in range(256):
         cont = 0
         for j in range(i):
             cont = cont + p[j]
         q[i] = cont
     
-    return p
+    return q
     
 def equalizacao_histograma(imagem): 
     print("Executando a thread: {}".format(threading.current_thread().name))
